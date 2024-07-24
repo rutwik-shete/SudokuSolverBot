@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  prompt_flow:
+    image: sudoku-telegram-promptflow:latest
+    container_name: prompt_flow
+    restart: always
+    networks:
+      - sudokunetwork
+    # environment:
+    #   - VARIABLE_NAME=value
+    ports:
+      - "8080:8080" # Adjust according to the port your prompt flow app runs on
+
+  telegram_bot:
+    image: sudoku-telegram-bot:latest
+    container_name: telegram_bot
+    restart: always
+    networks:
+      - sudokunetwork
+    environment:
+      - BOT_NAME=RutyaSheteBot
+      - TELEGRAM_TOCKEN=7062358692:AAEfViUy-jkjwIw3XKOiiDKjRQp6KaX5VS0
+      - TELEGRAM_API_ID=21545350
+      - TELEGRAM_API_HASH=6c524d59c904dbb83e0fdf15164edeab
+      - PROMPTFLOW_API=http://prompt_flow:8080/score
+
+networks:
+  sudokunetwork:
+    driver: bridge

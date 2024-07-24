@@ -1,0 +1,5 @@
+keys.env
+*.session
+pretrained_models/
+images/
+__pycache__

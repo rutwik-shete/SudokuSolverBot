@@ -1,0 +1,25 @@
+{
+  "nodeLayouts": {
+    "inputs": {
+      "x": 290,
+      "y": 42,
+      "index": -1
+    },
+    "outputs": {
+      "x": 220,
+      "y": 444,
+      "index": -1
+    },
+    "solve_sudoku": {
+      "x": 227.5,
+      "y": 310,
+      "index": 0
+    },
+    "text_extractor": {
+      "x": 140,
+      "y": 176,
+      "index": 1
+    }
+  },
+  "orientation": "Vertical"
+}

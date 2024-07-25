@@ -1,0 +1,29 @@
+$schema: https://azuremlschemas.azureedge.net/promptflow/latest/Flow.schema.json
+environment:
+  python_requirements_txt: requirements.txt
+inputs:
+  query_image:
+    type: image
+    default: sudoku_image.jpg
+outputs:
+  text_extractor_output:
+    type: string
+    reference: ${text_extractor.output}
+  solved_sudoku_output:
+    type: string
+    reference: ${solve_sudoku.output}
+nodes:
+- name: solve_sudoku
+  type: python
+  source:
+    type: code
+    path: solve_sudoku.py
+  inputs:
+    captioned_question: ${text_extractor.output}
+- name: text_extractor
+  type: python
+  source:
+    type: code
+    path: text_extractor.py
+  inputs:
+    input_image: ${inputs.query_image}

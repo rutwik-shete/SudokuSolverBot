@@ -19,6 +19,9 @@ RUN conda create -n promptflow-serve python=3.9.16 pip=23.0.1 -q -y && \
 
 COPY ./flow /flow
 
+RUN mkdir ./flow/pretrained_models
+
+RUN conda run -n promptflow-serve python3 ./flow/model_files/downloadModel.py
 
 EXPOSE 8080
 
